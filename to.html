@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .todo-form {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .todo-form input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .todo-form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .todo-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ced4da;
+            padding: 10px 0;
+        }
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .category-filter {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="todo-form">
+            <input type="text" id="taskInput" placeholder="Add new task">
+            <button id="addTaskBtn">Add Task</button>
+        </div>
+        <div class="category-filter">
+            <label for="categorySelect">Filter by Category:</label>
+            <select id="categorySelect">
+                <option value="all">All</option>
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="shopping">Shopping</option>
+            </select>
+        </div>
+        <ul class="todo-list" id="todoList"></ul>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const todoList = document.getElementById('todoList');
+        const categorySelect = document.getElementById('categorySelect');
+
+        addTaskBtn.addEventListener('click', () => {
+            const taskText = taskInput.value.trim();
+            if (taskText !== '') {
+                const category = categorySelect.value;
+                const listItem = document.createElement('li');
+                listItem.classList.add('todo-item');
+                listItem.innerHTML = `
+                    <input type="checkbox">
+                    <span>${taskText}</span>
+                    <span class="category">${category}</span>
+                    <button class="deleteBtn">Delete</button>
+                `;
+                todoList.appendChild(listItem);
+                taskInput.value = '';
+            }
+        });
+
+        todoList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('deleteBtn')) {
+                e.target.parentElement.remove();
+            }
+        });
+
+        categorySelect.addEventListener('change', () => {
+            const selectedCategory = categorySelect.value;
+            const todoItems = document.querySelectorAll('.todo-item');
+            todoItems.forEach(item => {
+                const category = item.querySelector('.category').textContent;
+                if (selectedCategory === 'all' || category === selectedCategory) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

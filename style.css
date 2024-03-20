@@ -1,0 +1,82 @@
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+.nav{
+    display: flex;
+    justify-content: center;
+}
+.nav ul{
+    list-style-type: none;
+}
+.nav a{
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* Header Styles */
+header {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+header h1 {
+    font-size: 36px;
+}
+/* Hero Section Styles */
+.hero {
+    background-image: url('https://via.placeholder.com/1200x400');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding: 100px 0;
+    text-align: center;
+}
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+.hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+/* Features Section Styles */
+.features {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+.feature {
+    flex: 0 0 30%;
+    background-color: #ffffff;
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.feature h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.feature p {
+    font-size: 16px;
+}
+/* Footer Styles */
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 80px;
+}
